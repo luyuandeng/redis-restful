@@ -1,6 +1,6 @@
-    module(...)
-    servers =
-    {
+module(...)
+servers =
+{
     {
     name='server1',
     host='127.0.0.1',
@@ -12,7 +12,7 @@
     host='127.0.0.1',
     port=6379,
     db=0
-}
+    }
 }
 
 apps = 
@@ -176,9 +176,9 @@ commands = {
         args = {}
     },
     incr = {
-        method = {},
-        args_len =
-        args =
+        method = {'POST'},
+        args_len = 0,
+        args = {}
     },
     strlen = {
         method = {'GET'},
@@ -238,9 +238,9 @@ commands = {
         args  = {'args'}
     },
     sunion ={
-        method =
-        args_len =
-        args  =
+        method = {'POST'},
+        args_len = 1,
+        args  = {'args'}
     },
     scard ={
         method = {'GET'},
@@ -253,9 +253,9 @@ commands = {
         args  = {}
     },
     sdiff ={
-        method =
-        args_len =
-        args  =
+        method = {'POST'}
+        args_len = 1,
+        args  = {'args'}
     },
     sismember ={
         method = {'GET'},
@@ -347,14 +347,14 @@ commands = {
     
     --[[sorted sets]]   
     zadd = {
-        method =
-        args_len =
-        args =
+        method = {'POST'},
+        args_len = 1,
+        args = {'args'}
     },
     zrem = {
-        method =
-        args_len =
-        args =
+        method = {'POST'},
+        args_len = 1,
+        args = {'args'}
     },
     zrevrangebyscore = {
         method =
@@ -372,9 +372,9 @@ commands = {
         args = {'start', 'end', 'withscores'}
     },
     zremrangebyrank = {
-        method =
-        args_len =
-        args =
+        method = {'POST'},
+        args_len = 2,
+        args = {'start', 'stop'}
     },
     zrevrank = {
         method = {'GET'},
@@ -387,9 +387,9 @@ commands = {
         args = {'min', 'max'}
     },
     zremrangebyscore = {
-        method =
-        args_len =
-        args =
+        method = {'POST'},
+        args_len = 2,
+        args = {'start', 'stop'}
     },
     zscore = {
         method = {'GET'},
@@ -397,9 +397,9 @@ commands = {
         args = {}
     },
     zincrby = {
-        method =
-        args_len =
-        args =
+        method = {'POST'},
+        args_len = 1,
+        args = {'increment'}
     },
     zrank = {
         method = {'GET'},
