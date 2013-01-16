@@ -1,9 +1,10 @@
 --[[ 在共享字典模块中初始化配置参数，便于程序块之间共享配置参数，读取配置参数 ]]
 
-local configs = ngx.shared.configs;
-local configs_file = require('lua/config.lua')
+local configs = ngx.shared.configs
+local configs_file = require 'lua/config.lua'
 
 --初始化commands配置
+
 local succ, err, forcible = configs:set('commands': configs_file.commands)
 if not succ then
     ngx.log(ngx.INFO, 'set commands err: '..err)

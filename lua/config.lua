@@ -1,3 +1,6 @@
+--file config.lua
+
+
 module(...)
 servers =
 {
@@ -39,6 +42,15 @@ commands = {
     --[[key]]                         
     --删除一个或者多个key
     del = {
+        { 
+            method = 'POST',
+            args_len = 
+            args = {
+                name = 
+                sepatate
+            }
+
+        },
         method = {'POST', 'GET'},
         args_len = 1,
         args = {'args'}
@@ -77,10 +89,10 @@ commands = {
         method = {'GET'},
         args_len = 0,
         args = {}
-    }
+    },
     expireat = {
         method = {'post'},
-        args_len = 1
+        args_len = 1,
         args = {'timestamp'}
     }, 
     pexpireat = {
@@ -112,7 +124,7 @@ commands = {
         methdo = {'POST'},
         args_len = 2,
         args = {'ttl', 'serialized-value'}
-    }
+    },
     
     --[[string]]          
     append = {
@@ -219,9 +231,9 @@ commands = {
         method = {'POST'},
         args_len = 1,
         args = {'args'}
-    }
+    },
     bitcount = {
-        method = {'GET'}
+        method = {'GET'},
         args_len = 2,
         args = {'start', 'end'}
     },
@@ -253,7 +265,7 @@ commands = {
         args  = {}
     },
     sdiff ={
-        method = {'POST'}
+        method = {'POST'},
         args_len = 1,
         args  = {'args'}
     },
@@ -264,7 +276,7 @@ commands = {
     },
     srandmember ={
         method = {'GET'},
-        args_len = 1
+        args_len = 1,
         args  = {'count'}
     },
     smembers ={
@@ -306,7 +318,7 @@ commands = {
     },
     hexists = {
         method = {'GET'},
-        args_len = 0
+        args_len = 0,
         args = {}
     },
     hmset = {
@@ -315,7 +327,7 @@ commands = {
         args = {'args'}
     },
     hget = {
-        method = {'GET'}
+        method = {'GET'},
         args_len = 0,
         args = {}
     },
@@ -489,3 +501,7 @@ commands = {
         args = {'count', 'value'}
     } 
 }
+
+for a, b in pairs(commands) do
+    print (a)
+end
