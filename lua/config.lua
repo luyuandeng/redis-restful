@@ -1,7 +1,7 @@
 --file config.lua
 
-
 module(...)
+
 servers =
 {
     {
@@ -47,7 +47,7 @@ commands = {
             args_len = 
             args = {
                 name = 
-                sepatate
+                sepatate = true,
             }
 
         },
