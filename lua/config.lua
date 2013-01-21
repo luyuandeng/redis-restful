@@ -74,69 +74,165 @@ commands = {
         }
     },
     exists = {
-        method = {'GET'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                name = nil,
+                separate = false
+                }
+            }
+        }
     }, 
     expire = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'seconds'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'seconds',
+                    separate = false
+                }
+            }
+        }
     },       
     pexpire = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'milliseconds'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'milliseconds',
+                    separate = false
+                }
+            }
+        }
     },
     randomkey = {
-        method = {'GET'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    sepatate = false
+                }
+            }
+        }
     },
     ttl = {
-        method = {'GET'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+
+        }
     },   
     pttl = {
-        method = {'GET'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    sepatate = false
+                }
+            }
+        }
     },
     expireat = {
-        method = {'post'},
-        args_len = 1,
-        args = {'timestamp'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'timestamp',
+                    separate = false
+                }
+            }
+        }
     }, 
     pexpireat = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'milliseconds_timestamp'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'milliseconds_timestamp',
+                    separate = false
+                }
+            }
+        }
     },
     persist = {
-        method = {'POST'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     rename = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'newkey'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'newkey',
+                    separate = false
+                }
+            }
+        }
     },     
     type = {
-        method = {'GET'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     dump = {
-        method = {'POST'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     restore = {
-        methdo = {'POST'},
-        args_len = 2,
-        args = {'ttl', 'serialized-value'}
+        {
+            method = 'POST',
+            args_len = 2,
+            args = {
+                {
+                    name = 'ttl',
+                    separate = false
+                },
+                {
+                    name = 'serialized-value',
+                    separate = false
+                }
+            }
+        }
     },
     
     --[[string]]          
