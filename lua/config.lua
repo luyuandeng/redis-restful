@@ -46,14 +46,20 @@ commands = {
             method = 'POST',
             args_len = 
             args = {
-                name = 
+                {
+                name =  
                 sepatate = true,
+                }
             }
-
         },
-        method = {'POST', 'GET'},
-        args_len = 1,
-        args = {'args'}
+        {
+            method = 'GET',
+            args_len =  
+            args = {
+                name = 
+                sepatate = 
+            }
+        }
     },
     renamenx = {
         method = {'POST'},

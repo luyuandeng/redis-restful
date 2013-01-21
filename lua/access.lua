@@ -45,19 +45,26 @@ end
 local uri  = ngx.var.uri
 local uri_splits = uri:split('/')
 
+-- 检查该app是否已经注册
 if not apps:has(uri_splits[0]) then
     ngx.log(ngx.INFO, 'err '..uri_splits[1]..' in uri')
     ngx.exit(400)
 end
+
+-- 检查在url中的该类型是否符合要求
 if not types:has(uri_splits[1]) then
     ngx.log(ngx.INFO, 'err '..uri_splits[2]..' in uri')
     ngx.exit(400)
 end
+
+-- 检查该redis命令是否合法
 if not commands:has(uri_splits[#uri_splits]) then
     ngx.log(ngx.INFO, 'err '..uri_splits[#uri_splits]..' in uri')
     ngx.exit(400)
 end
 
+
+-- 检查该url匹配到配置文件中的哪个表达式
 for i = 1, #patterns do
     local pattern = string.match(uri, patterns[i]) 
     ngx.log(ngx.INFO, 'matching '..patterns[i])
@@ -71,6 +78,7 @@ for i = 1, #patterns do
         break
     end
 end
+
 local pattern, flag = ngx.shared:get('pattern')
 if not flag == 0 then
     ngx.log(ngx.INFO, 'no pattern match this uri')
@@ -99,6 +107,7 @@ function check_args(req_args, conf_args)
     return true
 end
 
+-- 检查该请求是否匹配到配置文件中的一个方法
 local arg_index = nil
 local cmd = uri_splits[%uri_patterns]
 local method =  ngx.req.get_method()
@@ -121,5 +130,4 @@ else
         ngx.log(ngx.INFO, 'set arg_index error')
         ngx.exit(404)
     end
-
 end

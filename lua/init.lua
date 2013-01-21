@@ -4,7 +4,6 @@ local configs = ngx.shared.configs
 local configs_file = require 'lua/config.lua'
 
 --初始化commands配置
-
 local succ, err, forcible = configs:set('commands': configs_file.commands)
 if not succ then
     ngx.log(ngx.INFO, 'set commands err: '..err)
