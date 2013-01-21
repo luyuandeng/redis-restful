@@ -44,27 +44,34 @@ commands = {
     del = {
         { 
             method = 'POST',
-            args_len = 
+            args_len = 1,
             args = {
                 {
-                name =  
-                sepatate = true,
+                name = 'keys', 
+                sepatate = true
                 }
             }
         },
         {
             method = 'GET',
-            args_len =  
+            args_len = 0, 
             args = {
-                name = 
-                sepatate = 
+                name = nil,
+                sepatate = false
             }
         }
     },
     renamenx = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'newkey'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'newkey',
+                    separate = false
+                }
+            }
+        }
     },
     exists = {
         method = {'GET'},
