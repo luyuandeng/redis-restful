@@ -237,59 +237,152 @@ commands = {
     
     --[[string]]          
     append = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'value'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'value',
+                    separate = false
+                }
+            }
+        }
     },
     getbit = {
-        method = {'GET'},
-        args_len = 1,
-        args = {'offset'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'offset',
+                    separate = false
+                }
+            }
+        }
     },
     mget = {
-        method = {'GET'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     setex = {
-        method = {'POST'},
-        args_len = 2,
-        args = {'seconds', 'value'}
+        {
+            method = 'POST',
+            args_len = 2,
+            args = {
+                {
+                    name = 'seconds',
+                    separate = false
+                },
+                {
+                    name = 'value',
+                    separate = false
+                }
+            }
+        }
     },
     psetex = {
-        method = {'POST'},
-        args_len = 2,
-        args = {'milliseconds', 'value'}
+        {
+            method = 'POST',
+            args_len = 2,
+            args = {
+                {
+                    name = 'milliseconds',
+                    separate = false
+                },
+                {
+                    name = 'value',
+                    separate = false
+                }
+            }
+        }
     },
     getrange = {
-        method = {'GET'},
-        args_len = 2,
-        args = {'start', 'end'}
+        {
+            method = 'POST'
+            args_len = 2,
+            args = {
+                {
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'end',
+                    separate = false
+                }
+            }
+        }
     },
     mset = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'key-values',
+                    separate = true
+                }
+            }
+        }
     },
     setnx = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'value'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'value',
+                    separate = false
+                }
+            }
+        }
     },
     getset = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'value'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'value',
+                    separate = false
+                }
+            }
+        }
     },
     msetnx = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'key-value',
+                    separate = true
+                }
+            }
+        }
     },
     setrange = {
-        method = {'POST'},
-        args_len = 2,
-        args = {'offset', 'value'}
+        {
+            method = 'POST',
+            args_len = 2,
+            args = {
+                {
+                    name = 'offset',
+                    separate = false
+                },
+                {
+                    name = 'value',
+                    separate = false
+                }
+            }
+        }
     },
     decr = {
         method = {'POST'},
