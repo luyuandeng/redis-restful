@@ -385,108 +385,299 @@ commands = {
         }
     },
     decr = {
-        method = {'POST'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     incr = {
-        method = {'POST'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     strlen = {
-        method = {'GET'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     decrby = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'decrement'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'decrement',
+                    separate = false
+                }
+            }
+        }
     },
     incrby = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'increment'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'increment',
+                    separate = false
+                }
+            }
+        }
     },
     incrbyfloat = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'increment'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'increment',
+                    separate = false
+                }
+            }
+        }
     },
     set = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'value'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'value',
+                    separate = false
+                }
+            }
+        }
     },
     get = {
-        method = {'GET'},
-        args_len = 0,
-        args = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     setbit = {
-        method = {'POST'},
-        args_len = 2,
-        args = {'offset', 'value'}
+        {
+            method = 'POST',
+            args_len = 2,
+            args = {
+                {
+                    name = 'offset',
+                    separate = false
+                },
+                {
+                    name = 'value',
+                    separate = false
+                }
+            }
+        }
     },
     bitop = {
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
+        {
+            method = 'POST',
+            args_len = 3,
+            args = {
+                {
+                    name = 'operation',
+                    separate = false
+                },
+                {
+                    name = 'destkey',
+                    separate = false
+                },
+                {
+                    name = 'keys',
+                    separate = true
+                }
+            }
+        }
     },
     bitcount = {
-        method = {'GET'},
-        args_len = 2,
-        args = {'start', 'end'}
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                },
+            }
+        },
+        {
+            method = 'POST',
+            args_len = 2,
+            args = {
+                {
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'end',
+                    separate = false
+                }
+            }
+        }
     },
     
     --[[sets]]     
     sadd ={
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args  = {'args'}
     },
     sinter ={
-        method = {'POST'},
-        args_len = 1,
-        args  = {'args'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'members',
+                    separate = true
+                }
+            }
+        }
     },
     sunion ={
-        method = {'POST'},
-        args_len = 1,
-        args  = {'args'}
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'keys',
+                    separate = true
+                }
+            }
+        }
     },
     scard ={
-        method = {'GET'},
-        args_len = 0,
-        args  = {}
+        {
+            method = 'GET',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     spop ={
-        method = {'POST'},
-        args_len = 0,
-        args  = {}
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
     },
     sdiff ={
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args  = {'args'}
     },
     sismember ={
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 1,
         args = {'member'}
     },
     srandmember ={
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 1,
         args  = {'count'}
     },
     smembers ={
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     srem ={
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args  = {'args'}
@@ -494,66 +685,196 @@ commands = {
     
     --[[hash]]
     hdel = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST', 'GET'},
         args_len = 1,
         args = {'args'}
     },
     hincrby = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'increment'}
     },
     hincrbyfloat = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'increment'}
     },
     hmget = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'args'}
     },
     hvals = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     hexists = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     hmset = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'args'}
     },
     hget = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     hkeys = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     hset = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 2,
         args = {'field', 'value'}
     },
     hgetall = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = 
         args_len =
         args =
     },
     hlen = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'}
         args_len = 0,
         args = {}
     },
     hsetnx = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'}
         args_len = 2
         args = {'field', 'value'}
@@ -561,66 +882,196 @@ commands = {
     
     --[[sorted sets]]   
     zadd = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'args'}
     },
     zrem = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'args'}
     },
     zrevrangebyscore = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method =
         args_len =
         args =
     },
     zcard = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     zrange = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 3,
         args = {'start', 'end', 'withscores'}
     },
     zremrangebyrank = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 2,
         args = {'start', 'stop'}
     },
     zrevrank = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     zcount = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {'min', 'max'}
     },
     zremrangebyscore = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 2,
         args = {'start', 'stop'}
     },
     zscore = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     zincrby = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'increment'}
     },
     zrank = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     zrevrange = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 3,
         args = {'start', 'end', 'withscores'}
@@ -628,76 +1079,226 @@ commands = {
     
     --[[list]]    
     blpop = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'args'}
     },
     llen = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 0,
         args = {}
     },
     rpush = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'}
         args_len = 1,
         args = {'args'}
     },
     brpop = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'args'}
     },
     lpop = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 0,
         args = {}
     },
     lset = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 2,
         args = {'index', 'value'}
     },
     rpushx = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'value'}
     },
     lpush = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {'args'}
     },
     ltrim = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 2,
         args = {'start', 'stop'}
     },
     lindex = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 1,
         args = {'index'}
     },
     lpushx = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 1,
         args = {}
     },
     rpop = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 0,
         args = {}
     },
     linsert = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 3,
         args = {'be_af', 'pivot', 'value'}
     },
     lrange = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'GET'},
         args_len = 2,
         args = {'start', 'stop'}
     },
     lrem = {
+        {
+            method = 'POST',
+            args_len = 0,
+            args = {
+                {
+                    name = nil,
+                    separate = false
+                }
+            }
+        }
         method = {'POST'},
         args_len = 2,
         args = {'count', 'value'}
