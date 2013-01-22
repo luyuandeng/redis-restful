@@ -609,33 +609,27 @@ commands = {
     },
     sdiff ={
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'keys',
+                    separate = true
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args  = {'args'}
     },
     sismember ={
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 1,
             args = {
                 {
-                    name = nil,
+                    name = 'member',
                     separate = false
                 }
             }
         }
-        method = {'GET'},
-        args_len = 1,
-        args = {'member'}
     },
     srandmember ={
         {
