@@ -11,9 +11,9 @@ redis的restful实现
 
 ###uri
 
- 应用名称  类型       命令
-    |       |         |
-/{appid}/{types}/.../{cmd}
+     应用名称  类型       命令
+        |       |         |
+    /{appid}/{types}/.../{cmd}
 
 
 ###config format
