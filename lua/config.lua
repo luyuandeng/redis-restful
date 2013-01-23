@@ -682,62 +682,50 @@ commands = {
     hdel = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'fields',
+                    separate = true
                 }
             }
         }
-        method = {'POST', 'GET'},
-        args_len = 1,
-        args = {'args'}
     },
     hincrby = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
+                    name = 'increment',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'increment'}
     },
     hincrbyfloat = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
+                    name = 'increment',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'increment'}
     },
     hmget = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'fields',
+                    separate = true
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
     },
     hvals = {
         {
