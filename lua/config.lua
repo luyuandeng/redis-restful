@@ -729,7 +729,7 @@ commands = {
     },
     hvals = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -738,13 +738,10 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     hexists = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -753,28 +750,22 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     hmset = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'field-values',
+                    separate = true
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
     },
     hget = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -783,13 +774,10 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     hkeys = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -798,28 +786,26 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     hset = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'key',
+                    separate = false
+                },
+                {
+                    name = 'value',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 2,
-        args = {'field', 'value'}
     },
     hgetall = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -828,13 +814,10 @@ commands = {
                 }
             }
         }
-        method = 
-        args_len =
-        args =
     },
     hlen = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -843,56 +826,48 @@ commands = {
                 }
             }
         }
-        method = {'GET'}
-        args_len = 0,
-        args = {}
     },
     hsetnx = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'key',
                     separate = false
+                },
+                {
+                    name = 'value',
+                    separate =false
                 }
             }
         }
-        method = {'POST'}
-        args_len = 2
-        args = {'field', 'value'}
     },
     
     --[[sorted sets]]   
     zadd = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'score-member',
+                    separate = true
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
     },
     zrem = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'members',
+                    separate = true
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
     },
     zrevrangebyscore = {
         {
