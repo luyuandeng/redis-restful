@@ -1,6 +1,6 @@
 --file config.lua
 
-module(...)
+--module(...)
 
 servers =
 {
