@@ -934,66 +934,66 @@ commands = {
     zremrangebyrank = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'stop',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 2,
-        args = {'start', 'stop'}
     },
     zrevrank = {
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 1,
             args = {
                 {
-                    name = nil,
+                    name = 'member',
                     separate = false
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     zcount = {
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'min',
+                    separate = false
+                },
+                {
+                    name = 'max',
                     separate = false
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {'min', 'max'}
     },
     zremrangebyscore = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'stop',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 2,
-        args = {'start', 'stop'}
     },
     zscore = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -1002,28 +1002,22 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     zincrby = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
+                    name = 'increment',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'increment'}
     },
     zrank = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -1032,45 +1026,63 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     zrevrange = {
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'end',
                     separate = false
                 }
             }
+        },
+        {
+            method = 'GET',
+            args_len = 3,
+            args = {
+                {
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'end',
+                    separate = false
+                },
+                {
+                    name = 'withscores',
+                    separate = false
+                }
+            }
+
         }
-        method = {'GET'},
-        args_len = 3,
-        args = {'start', 'end', 'withscores'}
     },
     
     --[[list]]    
     blpop = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'keys',
+                    separate = true
+                },
+                {
+                    name = 'timeout',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
     },
     llen = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -1079,39 +1091,34 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     rpush = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'keys',
+                    separate = true
                 }
             }
         }
-        method = {'POST'}
-        args_len = 1,
-        args = {'args'}
     },
     brpop = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'keys',
+                    separate = true
+                },
+                {
+                    name = 'timeout',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
     },
     lpop = {
         {
@@ -1124,84 +1131,74 @@ commands = {
                 }
             }
         }
-        method = {'POST'},
-        args_len = 0,
-        args = {}
     },
     lset = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'index',
+                    separate = false
+                },
+                {
+                    name = 'value',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 2,
-        args = {'index', 'value'}
     },
     rpushx = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
+                    name = 'value',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'value'}
     },
     lpush = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'keys',
+                    separate = true
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {'args'}
     },
     ltrim = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'stop',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 2,
-        args = {'start', 'stop'}
     },
     lindex = {
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 1,
             args = {
                 {
-                    name = nil,
+                    name = 'index',
                     separate = false
                 }
             }
         }
-        method = {'GET'},
-        args_len = 1,
-        args = {'index'}
     },
     lpushx = {
         {
