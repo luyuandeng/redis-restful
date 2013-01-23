@@ -871,22 +871,23 @@ commands = {
     },
     zrevrangebyscore = {
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'min',
+                    separate = false
+                },
+                {
+                    name = 'max',
                     separate = false
                 }
             }
         }
-        method =
-        args_len =
-        args =
     },
     zcard = {
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -895,24 +896,40 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     zrange = {
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'end',
+                    separate = false
+                }
+            }
+        },
+        {
+            method = 'GET',
+            args_len = 3,
+            args = {
+                {
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'end',
+                    separate = false
+                },
+                {
+                    name = 'withscores',
                     separate = false
                 }
             }
         }
-        method = {'GET'},
-        args_len = 3,
-        args = {'start', 'end', 'withscores'}
     },
     zremrangebyrank = {
         {
