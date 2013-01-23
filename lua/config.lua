@@ -1203,17 +1203,14 @@ commands = {
     lpushx = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
+                    name = 'value',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args = {}
     },
     rpop = {
         {
@@ -1226,54 +1223,58 @@ commands = {
                 }
             }
         }
-        method = {'POST'},
-        args_len = 0,
-        args = {}
     },
     linsert = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 3,
             args = {
                 {
-                    name = nil,
+                    name = 'position',
+                    separate = false
+                },
+                {
+                    name = 'pivot',
+                    separate = false
+                },
+                {
+                    name = 'value',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 3,
-        args = {'be_af', 'pivot', 'value'}
     },
     lrange = {
         {
-            method = 'POST',
-            args_len = 0,
+            method = 'GET',
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'start',
+                    separate = false
+                },
+                {
+                    name = 'stop',
                     separate = false
                 }
             }
         }
-        method = {'GET'},
-        args_len = 2,
-        args = {'start', 'stop'}
     },
     lrem = {
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 2,
             args = {
                 {
-                    name = nil,
+                    name = 'count',
+                    separate = false
+                },
+                {
+                    name = 'value',
                     separate = false
                 }
             }
         }
-        method = {'POST'},
-        args_len = 2,
-        args = {'count', 'value'}
     } 
 }
 
