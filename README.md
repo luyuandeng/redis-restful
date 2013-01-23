@@ -18,25 +18,25 @@ redis的restful实现
 
 ###config format
 
-commands = {
-    cmd0 = {
-        {
-            method = '',
-            args_len = '',
-            args = {
-                { 
-                    name = 
-                    separate = 
+    commands = {
+        cmd0 = {
+            {
+                method = '',
+                args_len = '',
+                args = {
+                    { 
+                        name = 
+                        separate = 
+                    }
+                    ...
                 }
-                ...
             }
+            ...
+        }
+        cmd1 = {
+    
         }
         ...
     }
-    cmd1 = {
-
-    }
-    ...
-}
 
 
