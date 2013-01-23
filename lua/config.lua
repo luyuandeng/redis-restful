@@ -633,7 +633,7 @@ commands = {
     },
     srandmember ={
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -641,10 +641,17 @@ commands = {
                     separate = false
                 }
             }
+        },
+        {
+            method = 'GET',
+            args_len = 1,
+            args = {
+                {
+                    name = 'count',
+                    separate = false
+                }
+            }
         }
-        method = {'GET'},
-        args_len = 1,
-        args  = {'count'}
     },
     smembers ={
         {
