@@ -306,7 +306,7 @@ commands = {
     },
     getrange = {
         {
-            method = 'POST'
+            method = 'GET',
             args_len = 2,
             args = {
                 {
@@ -547,17 +547,24 @@ commands = {
     sadd ={
         {
             method = 'POST',
-            args_len = 1,
+            args_len = 0,
             args = {
                 {
                     name = nil,
                     separate = false
                 }
             }
+        },
+        {
+            method = 'POST',
+            args_len = 1,
+            args = {
+                {
+                    name = 'keys',
+                    separate = true
+                }
+            }
         }
-        method = {'POST'},
-        args_len = 1,
-        args  = {'args'}
     },
     sinter ={
         {
