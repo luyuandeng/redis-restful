@@ -655,7 +655,7 @@ commands = {
     },
     smembers ={
         {
-            method = 'POST',
+            method = 'GET',
             args_len = 0,
             args = {
                 {
@@ -664,24 +664,18 @@ commands = {
                 }
             }
         }
-        method = {'GET'},
-        args_len = 0,
-        args = {}
     },
     srem ={
         {
             method = 'POST',
-            args_len = 0,
+            args_len = 1,
             args = {
                 {
-                    name = nil,
-                    separate = false
+                    name = 'members',
+                    separate = true
                 }
             }
         }
-        method = {'POST'},
-        args_len = 1,
-        args  = {'args'}
     },
     
     --[[hash]]
