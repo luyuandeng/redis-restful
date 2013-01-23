@@ -1,7 +1,7 @@
 redis-restful
 =============
 
-redis的restful实现
+###redis的restful实现
 
 + 使用restful接口访问和调用redis 
 + 便于控制redis访问
