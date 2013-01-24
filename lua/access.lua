@@ -7,6 +7,7 @@ function string:split(sep)jj
    return fields
 end
 
+
 function table:has(str)
     for i = 1, #self do
         if str == self[i] then
@@ -14,6 +15,22 @@ function table:has(str)
         end
     end
     return false
+end
+
+
+--req_args为空时,req_args = {}
+function check_args(req_args, conf_args)        
+    if #req_args ~= conf_args['args_len'] then
+        return false
+    end
+    
+    for i = 1, #req_args['args'] do
+        local arg = req_args['args'][i]
+        if not req_args[conf_args.name] then 
+            return false
+        end
+    end
+    return true
 end
 
 local configs = ngx.shared.configs
@@ -92,20 +109,6 @@ else
     request_args = ngx.req.get_uri_args()
 end
 
---req_args为空时,req_args = {}
-function check_args(req_args, conf_args)        
-    if #req_args ~= conf_args['args_len'] then
-        return false
-    end
-    
-    for i = 1, #req_args['args'] do
-        local arg = req_args['args'][i]
-        if not req_args[arg.name] then 
-            return false
-        end
-    end
-    return true
-end
 
 -- 检查该请求是否匹配到配置文件中的一个方法
 local arg_index = nil
