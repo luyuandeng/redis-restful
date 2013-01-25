@@ -1,8 +1,8 @@
 --file config.lua
 
---module(...)
+module(...)
 
-servers =
+local servers =
 {
     {
     name='server1',
@@ -18,19 +18,19 @@ servers =
     }
 }
 
-apps = 
+local apps = 
 {
     'appid', 
     'default'
 }
 
-types = 
+local types = 
 {
     'key',
     'keys'
 }
 
-patterns = 
+local patterns = 
 {
     '^/%w+/key/[^/]+/%w+$',
     '^/%w+/keys/%w+$',
@@ -38,7 +38,7 @@ patterns =
     '^/%w+/key/[^/]+/member/[^/]+/%w+$'
 }
 
-commands = {
+local commands = {
     --[[key]]                         
     --删除一个或者多个key
     del = {
@@ -1285,6 +1285,8 @@ commands = {
     } 
 }
 
-for a, b in pairs(commands) do
-    print (a)
+local function _print() 
+    for a, b in pairs(commands) do
+        print (a)
+    end
 end
