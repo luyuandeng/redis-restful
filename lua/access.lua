@@ -1,6 +1,6 @@
 --file access.lua
 
-function string:split(sep)jj
+function string:split(sep)
    local sep, fields = sep or ":", {}
    local pattern = string.format("([^%s]+)", sep)
    self:gsub(pattern, function(c) fields[#fields+1] = c end)
@@ -87,7 +87,7 @@ for i = 1, #patterns do
     ngx.log(ngx.INFO, 'matching '..patterns[i])
     if pattern then
         ngx.log(ngx.INFO, 'uri is matched whith '..patterns[i])
-        local succ, err, forcble = configs:set('pattern': i)    --记录匹配到的uri，用于content中读取
+        local succ, err, forcble = configs:set('pattern', i)     --记录匹配到的uri，用于content中读取
         if not succ then
             ngx.log(ngx.INFO, 'set pattern err '..err)
             ngx.exit(500)
@@ -112,7 +112,7 @@ end
 
 -- 检查该请求是否匹配到配置文件中的一个方法
 local arg_index = nil
-local cmd = uri_splits[%uri_patterns]
+local cmd = uri_splits[#uri_patterns]
 local method =  ngx.req.get_method()
 for i = 1, #commands[cmd] do
     local arg = commands[cmd][i]
