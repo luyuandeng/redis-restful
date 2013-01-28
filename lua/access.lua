@@ -9,12 +9,11 @@ end
 
 
 function table.has(self, str)
-    for i = 1, #self do
-        if str == self[i] then
-            return true
-        end
+    if self[str] then
+        return true
+    else 
+        return false
     end
-    return false
 end
 
 
