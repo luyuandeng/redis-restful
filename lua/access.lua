@@ -1,5 +1,9 @@
 --file access.lua
 
+package.path = 'lua/?.lua'
+
+local prolib = require "prolib"
+
 function string:split(sep)
    local sep, fields = sep or ":", {}
    local pattern = string.format("([^%s]+)", sep)
@@ -40,25 +44,28 @@ if not flags then
     ngx.log(ngx.INFO, 'err when get commands')
     ngx.exit(500)
 end
-
+commands = prolib.table.loadstring(commands)
 
 local patterns, flags = configs:get('patterns')
 if not flags then
     ngx.log(ngx.INFO, 'err when get patterns')
     ngx.exit(500)
 end
+patterns = prolib.table.loadstring(patterns)
 
 local types, flags = configs:get('types')
 if not flags then
     ngx.log(ngx.INFO, 'err when get types')
     ngx.exit(500)
 end
+types = prolib.table.loadstring(types)
 
 local apps, flags = configs:get('apps')
 if not flags then
     ngx.log(ngx.INFO, 'err when get apps')
     ngx.exit(500)
 end
+apps = prolib.table.loadstring(apps)
 
 local uri  = ngx.var.uri
 local uri_splits = uri:split('/')
@@ -97,6 +104,7 @@ for i = 1, #patterns do
     end
 end
 
+-- pattern:  匹配到的url模式
 local pattern, flag = ngx.shared:get('pattern')
 if not flag == 0 then
     ngx.log(ngx.INFO, 'no pattern match this uri')

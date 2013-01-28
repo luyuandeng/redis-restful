@@ -15,7 +15,10 @@ if not succ then
     ngx.exit(500)
 end
 
-for a, b in pairs(configs.commands) do
+-- test commands 
+local commands = config_dict:get('commands')
+commands = prolib.table.loadstring(commands)
+for a, b in pairs(commands) do
     ngx.log(ngx.INFO, a)
 end
 
