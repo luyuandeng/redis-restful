@@ -1,7 +1,6 @@
 --[[redis执行函数库]]
 
-
-module(...)
+module(..., package.seeall)
 
 split = function (uri_splits, args)
     local keyid = uri_args[3]

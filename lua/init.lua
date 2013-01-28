@@ -4,34 +4,41 @@ package.path = 'lua/?.lua'
 
 local config_dict = ngx.shared.configs
 local configs = require 'config'
+local prolib = require 'prolib'
 
 --初始化commands配置
-local succ, err, forcible = config_dict:set('commands', configs.commands)
+
+local commands = prolib.table.tostring(configs.commands)
+local succ, err, forcible = config_dict:set('commands', commands)
 if not succ then
     ngx.log(ngx.INFO, 'set commands err: '..err)
     ngx.exit(500)
 end
 
 for a, b in pairs(configs.commands) do
-    ngx.log(INFO, a)
+    ngx.log(ngx.INFO, a)
 end
 
 --初始化apps配置
-succ, err, forcible = config_dict:set('apps', configs.apps)
+
+local apps = prolib.table.tostring(configs.apps)
+succ, err, forcible = config_dict:set('apps', apps)
 if not succ then
     ngx.log(ngx.INFO, 'set apps err: '..err)
     ngx.exit(500)
 end
 
 --初始化patterns配置
-succ, err, forcible = config_dict:set('patterns', configs.patterns)
+local patterns prolib.table.tostring(configs.patterns)
+succ, err, forcible = config_dict:set('patterns', patterns)
 if not succ then
     ngx.log(ngx.INFO, 'set patterns err: '..err)
     ngx.exit(500)
 end
 
 --初始化types参数
-succ, err, forcible = config_dict:set('types', configs.types)
+local types = prolib.table.tostring(configs.types)
+succ, err, forcible = config_dict:set('types', types)
 if not succ then
     ngx.log(ngx.INDO, 'set types err: '..err)
     ngx.exit(500)
