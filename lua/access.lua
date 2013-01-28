@@ -2,7 +2,8 @@
 
 package.path = 'lua/?.lua'
 
-local prolib = require "prolib"
+require "prolib"
+
 
 function string:split(sep)
    local sep, fields = sep or ":", {}
@@ -44,33 +45,34 @@ if not commands then
     ngx.log(ngx.INFO, 'err when get commands')
     ngx.exit(500)
 end
-commands = prolib.table.loadstring(commands)
+commands = table.loadstring(commands)
 
 local patterns = configs:get('patterns')
 if not patterns then
     ngx.log(ngx.INFO, 'err when get patterns')
     ngx.exit(500)
 end
-patterns = prolib.table.loadstring(patterns)
+patterns = table.loadstring(patterns)
 
 local types = configs:get('types')
 if not types then
     ngx.log(ngx.INFO, 'err when get types')
     ngx.exit(500)
 end
-types = prolib.table.loadstring(types)
+types = table.loadstring(types)
 
 local apps = configs:get('apps')
 if not apps then
     ngx.log(ngx.INFO, 'err when get apps')
     ngx.exit(500)
 end
-apps = prolib.table.loadstring(apps)
+apps = table.loadstring(apps)
 
-local uri  = ngx.var.uri
+local uri = ngx.var.uri
 local uri_splits = uri:split('/')
 
 -- 检查该app是否已经注册
+ngx.log(ngx.INFO, type(apps))
 if not apps:has(uri_splits[0]) then
     ngx.log(ngx.INFO, 'err '..uri_splits[1]..' in uri')
     ngx.exit(400)
