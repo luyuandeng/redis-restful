@@ -133,7 +133,7 @@ end
 
 -- 检查该请求是否匹配到配置文件中的一个方法
 local arg_index = nil
-local cmd = uri_splits[#uri_patterns]
+local cmd = uri_splits[#uri_splits]
 local method = ngx.req.get_method()
 for i = 1, #commands[cmd] do
     local arg = commands[cmd][i]
