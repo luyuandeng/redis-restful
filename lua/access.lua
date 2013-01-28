@@ -39,29 +39,29 @@ end
 
 local configs = ngx.shared.configs
 
-local commands, flags = configs:get('commands')
-if not flags then
+local commands = configs:get('commands')
+if not commands then
     ngx.log(ngx.INFO, 'err when get commands')
     ngx.exit(500)
 end
 commands = prolib.table.loadstring(commands)
 
-local patterns, flags = configs:get('patterns')
-if not flags then
+local patterns = configs:get('patterns')
+if not patterns then
     ngx.log(ngx.INFO, 'err when get patterns')
     ngx.exit(500)
 end
 patterns = prolib.table.loadstring(patterns)
 
-local types, flags = configs:get('types')
-if not flags then
+local types = configs:get('types')
+if not types then
     ngx.log(ngx.INFO, 'err when get types')
     ngx.exit(500)
 end
 types = prolib.table.loadstring(types)
 
-local apps, flags = configs:get('apps')
-if not flags then
+local apps = configs:get('apps')
+if not apps then
     ngx.log(ngx.INFO, 'err when get apps')
     ngx.exit(500)
 end
@@ -122,7 +122,7 @@ end
 -- 检查该请求是否匹配到配置文件中的一个方法
 local arg_index = nil
 local cmd = uri_splits[#uri_patterns]
-local method =  ngx.req.get_method()
+local method = ngx.req.get_method()
 for i = 1, #commands[cmd] do
     local arg = commands[cmd][i]
     if method == arg['method'] then
