@@ -4,10 +4,43 @@ package.path = 'lua/?.lua'
 
 local config_dict = ngx.shared.configs
 local configs = require 'config'
-require 'prolib'
+
+
+table.tostring = function(t)
+    local mark = {}
+    local assign = {}
+    local function ser_table(tb1, parent)
+        mark[tb1] = parent
+        local tmp = {}
+        for k, v in pairs(tb1) do
+            local key = type(k) == "number" and "["..k.."]" or "["..string.format("%q", k).."]"
+            if type(v) == 'table' then
+                local dotkey = parent..key
+                if mark[v] then
+                    table.insert(assign, dotkey.."="..mark[v].."\"")
+                else
+                    table.insert(tmp, key.."="..ser_table(v, dotkey))
+                end
+            elseif type(v) == "string" then
+                table.insert(tmp, key.."="..string.format("%q", v))
+            elseif type(v) == "number" or type(v) == "boolean" then
+                table.insert(tmp, key.."="..tostring(v))
+            end
+        end
+        return "{"..table.concat(tmp, ',').."}"
+    end
+    return "do local ret="..ser_table(t, 'ret')..table.concat(assign, " ").."return ret end"
+end
+
+table.loadstring = function(strData)
+    local f = loadstring(strData)
+    if f then
+        return f()
+    end
+end
+
 
 --初始化commands配置
-
 local commands = table.tostring(configs.commands)
 local succ, err, forcible = config_dict:set('commands', commands)
 if not succ then

@@ -1,10 +1,5 @@
 --file access.lua
 
-package.path = 'lua/?.lua'
-
-require "prolib"
-
-
 function string:split(sep)
    local sep, fields = sep or ":", {}
    local pattern = string.format("([^%s]+)", sep)
@@ -13,13 +8,21 @@ function string:split(sep)
 end
 
 
-function table:has(str)
+function table.has(self, str)
     for i = 1, #self do
         if str == self[i] then
             return true
         end
     end
     return false
+end
+
+
+table.loadstring = function(strData)
+    local f = loadstring(strData)
+    if f then
+        return f()
+    end
 end
 
 
@@ -72,20 +75,19 @@ local uri = ngx.var.uri
 local uri_splits = uri:split('/')
 
 -- 检查该app是否已经注册
-ngx.log(ngx.INFO, type(apps))
-if not apps:has(uri_splits[0]) then
+if not table.has(apps, uri_splits[1]) then
     ngx.log(ngx.INFO, 'err '..uri_splits[1]..' in uri')
     ngx.exit(400)
 end
 
 -- 检查在url中的该类型是否符合要求
-if not types:has(uri_splits[1]) then
+if not table.has(types, uri_splits[2]) then
     ngx.log(ngx.INFO, 'err '..uri_splits[2]..' in uri')
     ngx.exit(400)
 end
 
 -- 检查该redis命令是否合法
-if not commands:has(uri_splits[#uri_splits]) then
+if not table.has(commands, uri_splits[#uri_splits]) then
     ngx.log(ngx.INFO, 'err '..uri_splits[#uri_splits]..' in uri')
     ngx.exit(400)
 end

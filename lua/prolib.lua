@@ -14,6 +14,23 @@ split = function (uri_splits, args)
     return ok
 end
 
+function string:split(sep)
+   local sep, fields = sep or ":", {}
+   local pattern = string.format("([^%s]+)", sep)
+   self:gsub(pattern, function(c) fields[#fields+1] = c end)
+   return fields
+end
+
+
+function table:has(str)
+    for i = 1, #self do
+        if str == self[i] then
+            return true
+        end
+    end
+    return false
+end
+
 table.tostring = function(t)
     local mark = {}
     local assign = {}
