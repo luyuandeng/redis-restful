@@ -2,7 +2,7 @@
 
 module(...)
 
-local servers =
+servers =
 {
     {
     name='server1',
@@ -18,19 +18,19 @@ local servers =
     }
 }
 
-local apps = 
+apps = 
 {
     'appid', 
     'default'
 }
 
-local types = 
+types = 
 {
     'key',
     'keys'
 }
 
-local patterns = 
+patterns = 
 {
     '^/%w+/key/[^/]+/%w+$',
     '^/%w+/keys/%w+$',
@@ -38,7 +38,7 @@ local patterns =
     '^/%w+/key/[^/]+/member/[^/]+/%w+$'
 }
 
-local commands = {
+commands = {
     --[[key]]                         
     --删除一个或者多个key
     del = {

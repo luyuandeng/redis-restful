@@ -12,6 +12,10 @@ if not succ then
     ngx.exit(500)
 end
 
+for a, b in pairs(configs.commands) do
+    ngx.log(INFO, a)
+end
+
 --初始化apps配置
 succ, err, forcible = config_dict:set('apps', configs.apps)
 if not succ then

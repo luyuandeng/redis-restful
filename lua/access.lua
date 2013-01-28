@@ -41,6 +41,7 @@ if not flags then
     ngx.exit(500)
 end
 
+
 local patterns, flags = configs:get('patterns')
 if not flags then
     ngx.log(ngx.INFO, 'err when get patterns')
