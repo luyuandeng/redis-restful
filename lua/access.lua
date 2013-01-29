@@ -36,7 +36,9 @@ end
 
 --req_args为空时,req_args = {}
 function check_args(req_args, conf_args)        
-    if #req_args ~= conf_args['args_len'] then
+    for req_args_length 
+    if req_args_length ~= conf_args['args_len'] then
+        ngx.log(ngx.INFO, 'error args_len '..#req_args..' '..conf_args['args_len'])
         return false
     end
     
@@ -123,8 +125,10 @@ if not flag == 0 then
     ngx.exit(400)
 end
 
-local request_args
+local request_args = nil
+local method = ngx.req.get_method()
 if method == 'POST' then
+    ngx.req.read_body()
     request_args = ngx.req.get_post_args()
 else
     request_args = ngx.req.get_uri_args()
@@ -134,7 +138,6 @@ end
 -- 检查该请求是否匹配到配置文件中的一个方法
 local arg_index = nil
 local cmd = uri_splits[#uri_splits]
-local method = ngx.req.get_method()
 for i = 1, #commands[cmd] do
     local arg = commands[cmd][i]
     if method == arg['method'] then
@@ -142,6 +145,8 @@ for i = 1, #commands[cmd] do
            arg_index = i
            break
        end
+    else
+        ngx.log(ngx.INFO, 'method error '..method..' '..arg['method'])
     end
 end
 

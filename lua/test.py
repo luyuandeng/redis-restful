@@ -6,9 +6,11 @@ import random
 import md5
 
 
-r = requests.get('http://localhost:8080/default/key/dfdsr/member/fdssde/del')
-print r.text
-
 apps = {'appid', 'default'}
 types = {'key', 'keys'}
+
+if __name__ == "__main__":
+    form = {'value':'www.google.com'}
+    r = requests.post('http://localhost:8080/default/key/google/set', data = form)
+    print r.text
 
