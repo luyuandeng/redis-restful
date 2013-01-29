@@ -1,6 +1,6 @@
 --[[ 在共享字典模块中初始化配置参数，便于程序块之间共享配置参数，读取配置参数 ]]
-
-package.path = 'lua/?.lua'
+--
+package.path = package.path..';lua/?.lua'
 
 local config_dict = ngx.shared.configs
 local configs = require 'config'
