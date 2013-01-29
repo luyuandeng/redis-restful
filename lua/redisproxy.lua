@@ -10,18 +10,6 @@ if not ok then
     return
 end
 
-local _M = loadfile('lua/commands.lua')()
-local commands = {}
-
-for i = 1, #_M do
-    local cmd = _M[i]
-    commands[cmd] = 
-        function (...) 
-            return red[cmd](red,...)
-        end
-end
-
-
 function string:split(sep)
    local sep, fields = sep or ":", {}
    local pattern = string.format("([^%s]+)", sep)
@@ -35,10 +23,7 @@ function struct_args(args)                --包装命令和参数
     for i = 1, #args do
         str_args[#str_args + 1] = '\''..args[i]..'\''
     end
-    local args_string = "return "..str_args[1]
-    for i = 2, #str_args do
-        args_string = args_string..','..str_args[i]
-    end
+    local args_string = "return "..table.concat(str_args,',')
     return args_string
 end
     
@@ -60,6 +45,7 @@ commands = table.loadstring(commands)
 
 local uri = ngx.var.uri
 local uri_args = uri:split('/')
+
 local cmd = uri_args[#uri_args]
 local method = ngx.req.get_method()
 local req_args
@@ -80,23 +66,35 @@ local redis_args = {}
 local arg_index = configs:get('arg_index')
 if not arg_index then
     ngx.log(ngx.INFO, 'error when get arg_index')
+    ngx.exit(500)
 end
 for i = 1, #confdocs[arg_index]['args'] do
     local arg = confdocs[arg_index]['args'][i]
     if arg.separate then
-        sep_args = arg.name:split(',')
+        sep_args = req_args[arg.name]:split(',')
         for j = 1, #sep_args do
             table.insert(redis_args, sep_args[j])
         end
     else
-        table.insert(redis_args, arg.name)
+        table.insert(redis_args, req_args[arg.name])
     end
 end
 
-for a, b in pairs(redis_args) do
-    print (a, b)
+local pattern = configs:get('pattern')
+if not pattern then
+    ngx.log(ngx.INFO, 'err get pattern')
+    ngx.exit(500)
 end
-ngx.exit(200)
+
+if pattern == 1 then
+    local key = uri_args[3]
+    local cmd = uri_args[#uri_args]
+    local args_string = struct_args(redis_args)
+    red[cmd](red,key,loadstring(args_string)())
+elseif pattern == 2 then
+    local cmd = uri_args[#uri_args]
+    local args_string = struct_args(redis_args)
+    red[cmd](red,loadstring(args_string)())
 
 local ok, err = red:set_keepalive(10000,100)
 if not ok then
