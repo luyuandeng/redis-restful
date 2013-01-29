@@ -43,13 +43,20 @@ function struct_args(args)                --包装命令和参数
 end
     
 
+table.loadstring = function(strData)
+    local f = loadstring(strData)
+    if f then
+        return f()
+    end
+end
+
 local configs = ngx.shared.configs
-local commands, flags = configs:get('commands')
-if not flags then
+local commands  = configs:get('commands')
+if not commands then
     ngx.log(ngx.INFO, 'err in get commands')
     ngx.exit(500)
 end
-
+commands = table.loadstring(commands)
 
 local uri = ngx.var.uri
 local uri_args = uri:split('/')
@@ -57,6 +64,7 @@ local cmd = uri_args[#uri_args]
 local method = ngx.req.get_method()
 local req_args
 if method == 'POST' then
+    ngx.req.read_body()
     req_args = ngx.req.get_post_args()
 elseif method == 'GET' then
     req_args = ngx.req.get_uri_args()
@@ -70,6 +78,9 @@ end
 
 local redis_args = {}
 local arg_index = configs:get('arg_index')
+if not arg_index then
+    ngx.log(ngx.INFO, 'error when get arg_index')
+end
 for i = 1, #confdocs[arg_index]['args'] do
     local arg = confdocs[arg_index]['args'][i]
     if arg.separate then
@@ -85,7 +96,6 @@ end
 for a, b in pairs(redis_args) do
     print (a, b)
 end
-
 ngx.exit(200)
 
 local ok, err = red:set_keepalive(10000,100)
