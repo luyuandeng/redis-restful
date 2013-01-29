@@ -36,13 +36,16 @@ end
 
 --req_args为空时,req_args = {}
 function check_args(req_args, conf_args)        
-    for req_args_length 
+    local req_args_length = 0
+    for k, v in pairs(req_args) do
+        req_args_length = req_args_length + 1
+    end
     if req_args_length ~= conf_args['args_len'] then
         ngx.log(ngx.INFO, 'error args_len '..#req_args..' '..conf_args['args_len'])
         return false
     end
     
-    for i = 1, #req_args['args'] do
+    for i = 1, #conf_args['args'] do
         local arg = req_args['args'][i]
         if not req_args[conf_args.name] then 
             return false
