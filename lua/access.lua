@@ -46,8 +46,8 @@ function check_args(req_args, conf_args)
     end
     
     for i = 1, #conf_args['args'] do
-        local arg = req_args['args'][i]
-        if not req_args[conf_args.name] then 
+        local arg = conf_args['args'][i]
+        if not conf_args[conf_args.name] then 
             return false
         end
     end
