@@ -39,4 +39,10 @@ redis-restful
         ...
     }
 
+TODO
+====
 
++ check config file
++ append test case
++ make diffrent appid to diffrent instance
++ ...
