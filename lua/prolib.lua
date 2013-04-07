@@ -1,4 +1,6 @@
 --[[redis执行函数库]]
+--file: prolib.lua
+--@author: xiangchao<cloudaice@gmail.com>
 
 --module(..., package.seeall)
 

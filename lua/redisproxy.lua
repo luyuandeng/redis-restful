@@ -1,4 +1,5 @@
 --file redisproxy.lua
+--@author: xiangchao<cloudaice@gmail.com>
 
 local redis = require "resty.redis"
 local cjson = require "cjson"

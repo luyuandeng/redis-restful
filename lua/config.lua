@@ -1,4 +1,5 @@
 --file config.lua
+--@author: xiangchao<cloudaice@gmail.com>
 
 module(...)
 
