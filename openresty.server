@@ -2,16 +2,13 @@
 #-------------------------------------
 #Nginx server control script
 #By BB-Q 2008-10-25 17:14
+#modify by cloudaice 2013-04-23 12:56
 #------------------------------------
 
-DAEMON="/usr/local/openresty/nginx/sbin/nginx" 
-CONF="/Users/xiangchao/proj/redis-restful/conf/nginx.conf" 
-PID="/Users/xiangchao/proj/redis-restful/logs/nginx.pid" 
-
-ROOTPATH="/Users/xiangchao/proj/redis-restful" 
-#CONF="$ROOTPATH/nginx.conf"    #"$ROOTPATH/conf/nginx.conf" 
-#DAEMON="/usr/local/sbin/nginx"  #"$ROOTPATH/sbin/nginx" 
-#PID="/var/run/nginx.pid"  #"$ROOTPATH/run/nginx.pid" 
+DAEMON="/usr/local/openresty/nginx/sbin/nginx" # The nginx executable file
+CONF="/Users/xiangchao/proj/redis-restful/conf/nginx.conf" #The conf file of your own
+PID="/Users/xiangchao/proj/redis-restful/logs/nginx.pid" #The pid of your nginx
+ROOTPATH="/Users/xiangchao/proj/redis-restful" #The root dir often your work dir
 
 nginx_start() { 
   # Sanity checks. 
