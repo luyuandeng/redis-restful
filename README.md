@@ -50,5 +50,7 @@ TODO
 + ...
 
 ###Usage
-...
+
+    mkdir mywork
+    git clone git@github.com:cloudaice/redis-restful.git
 
