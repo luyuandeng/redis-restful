@@ -54,3 +54,9 @@ TODO
     mkdir mywork
     git clone git@github.com:cloudaice/redis-restful.git
 
+修改`openresty.server`里面配置路径
+
+  + DAEMON: 设置nginx可执行文件路径
+  + CONF: 设置nginx配置文件路径
+  + PID: 设置nginx进程的pid文件路径
+  + ROOTPATH: 设置当前工作环境的路径，作为根路径
