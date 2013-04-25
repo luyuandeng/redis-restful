@@ -42,7 +42,7 @@ table.loadstring = function(strData)
 end
 
 
---初始化commands配置
+-- 初始化commands配置
 local commands = table.tostring(configs.commands)
 local succ, err, forcible = config_dict:set('commands', commands)
 if not succ then
@@ -57,7 +57,7 @@ for a, b in pairs(commands) do
     ngx.log(ngx.INFO, a)
 end
 
---初始化apps配置
+-- 初始化apps配置
 
 local apps = table.tostring(configs.apps)
 succ, err, forcible = config_dict:set('apps', apps)
@@ -66,7 +66,7 @@ if not succ then
     ngx.exit(500)
 end
 
---初始化patterns配置
+-- 初始化patterns配置
 local patterns = table.tostring(configs.patterns)
 succ, err, forcible = config_dict:set('patterns', patterns)
 if not succ then
@@ -74,7 +74,7 @@ if not succ then
     ngx.exit(500)
 end
 
---初始化types参数
+-- 初始化types参数
 local types = table.tostring(configs.types)
 succ, err, forcible = config_dict:set('types', types)
 if not succ then

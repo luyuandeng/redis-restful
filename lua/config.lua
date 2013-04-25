@@ -40,8 +40,8 @@ patterns =
 }
 
 commands = {
-    --[[key]]                         
-    --删除一个或者多个key
+    --[[ key ]]                         
+    -- 删除一个或者多个key
     del = {
         { 
             method = 'POST',

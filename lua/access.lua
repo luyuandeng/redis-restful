@@ -8,8 +8,7 @@ function string:split(sep)
    return fields
 end
 
-
---无法使用":"为table添加方法
+-- 无法使用":"为table添加方法, 这里使用"."为table添加方法
 table.has_key = function (self, key)
     if self[key] then
         return true
@@ -34,13 +33,13 @@ table.loadstring = function(strData)
     end
 end
 
-
---req_args为空时,req_args = {}
+-- req_args为空时,req_args = {}
 function check_args(req_args, conf_args)        
     local req_args_length = 0
     for k, v in pairs(req_args) do
         req_args_length = req_args_length + 1
     end
+
     if req_args_length ~= conf_args['args_len'] then
         ngx.log(ngx.INFO, 'error args_len '..#req_args..' '..conf_args['args_len'])
         return false
@@ -54,6 +53,8 @@ function check_args(req_args, conf_args)
     end
     return true
 end
+
+
 
 local configs = ngx.shared.configs
 
@@ -122,7 +123,7 @@ for i = 1, #patterns do
     end
 end
 
--- pattern:  匹配到的url模式
+-- pattern: 匹配到的url模式
 local pattern, flag = configs:get('pattern')
 if not flag == 0 then
     ngx.log(ngx.INFO, 'no pattern match this uri')
