@@ -5,7 +5,7 @@ local redis = require "resty.redis"
 local cjson = require "cjson"
 local red = redis:new()
 red:set_timeout(1000)       -- 1 sec
-local ok, err = red:connect('10.237.3.155',22121);
+local ok, err = red:connect('127.0.0.1', 6379);
 if not ok then
     ngx.say('failed to connect', err)
     return
@@ -35,6 +35,7 @@ table.loadstring = function(strData)
         return f()
     end
 end
+
 
 local configs = ngx.shared.configs
 local commands  = configs:get('commands')
