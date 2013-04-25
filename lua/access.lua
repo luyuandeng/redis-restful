@@ -9,7 +9,7 @@ function string:split(sep)
 end
 
 
---无法使用:添加table的方法
+--无法使用":"为table添加方法
 table.has_key = function (self, key)
     if self[key] then
         return true
