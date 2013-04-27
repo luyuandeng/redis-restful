@@ -57,8 +57,8 @@ for a, b in pairs(commands) do
     ngx.log(ngx.INFO, a)
 end
 
--- 初始化apps配置
 
+-- 初始化apps配置
 local apps = table.tostring(configs.apps)
 succ, err, forcible = config_dict:set('apps', apps)
 if not succ then

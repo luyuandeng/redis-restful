@@ -92,23 +92,23 @@ if pattern == 1 then
     local key = uri_args[3]
     local cmd = uri_args[#uri_args]
     local args_string = struct_args(redis_args)
-    red[cmd](red,key,loadstring(args_string)())
+    red[cmd](red, key, loadstring(args_string)())
 elseif pattern == 2 then
     local cmd = uri_args[#uri_args]
     local args_string = struct_args(redis_args)
-    red[cmd](red,loadstring(args_string)())
+    red[cmd](red, loadstring(args_string)())
 elseif pattern == 3 then
     local key = uri_args[3] 
     local field = uri_args[5]
     local cmd = uri_args[#uri_args]
     local args_string = struct_args(redis_args)
-    red[cmd](red,key,field,loadstring(args_string)())
+    red[cmd](red, key, field, loadstring(args_string)())
 elseif pattern == 4 then
     local key = uri_args[3]
     local member = uri_args[5]
     local cmd = uri_args[#uri_args]
     local args_string = struct_args(redis_args)
-    red[cmd](red,key,member,loadstring(args_string)())
+    red[cmd](red, key, member, loadstring(args_string)())
 else
     ngx.log(ngx.INFO, 'error pattern')
     ngx.exit(500)

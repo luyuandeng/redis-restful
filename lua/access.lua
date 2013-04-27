@@ -55,7 +55,6 @@ function check_args(req_args, conf_args)
 end
 
 
-
 local configs = ngx.shared.configs
 
 local commands = configs:get('commands')
