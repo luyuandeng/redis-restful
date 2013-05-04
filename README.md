@@ -1,7 +1,8 @@
 redis-restful
 =============
 
-###redis的restful实现
+redis的restful实现
+-----------------
 
 + 使用restful接口访问和调用redis 
 + 便于控制redis访问
@@ -9,14 +10,16 @@ redis-restful
 + 增强都redis的可控制性
 
 
-###uri
+uri
+---
 
      应用名称  类型       命令
         |       |         |
     /{appid}/{types}/.../{cmd}
 
 
-###config format
+config format
+-------------
 
     commands = {
         cmd0 = {
@@ -40,7 +43,7 @@ redis-restful
     }
 
 TODO
-====
+----
 
 + check config file
 + append test case
@@ -49,7 +52,8 @@ TODO
 + auth action
 + ...
 
-###Usage
+Usage
+-----
 
     mkdir mywork
     git clone git@github.com:cloudaice/redis-restful.git
@@ -61,6 +65,7 @@ TODO
   + PID: 设置nginx进程的pid文件路径
   + ROOTPATH: 设置当前工作环境的路径，作为根路径
 
-note
-====
+Note
+----
+
 本来是把请求的验证放在access阶段的，为了复用access阶段获得的一些变量，于是采用共享内存的方式,存入dict，后来发现这么做会导致不同的请求访问的时候造成变量污染，于是把验证和执行都放在了content阶段。
