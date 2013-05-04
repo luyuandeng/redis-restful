@@ -16,13 +16,13 @@ def Test_del():
     form = {"keys", "google"}
     uri = "/default/keys/google/del"
     r = requests.post(host + uri, data=form)
-    assert r.response_code == 200
+    assert r.status_code == 200
 
 
 def Test_set():
     form = {'value': 'www.google.com'}
     r = requests.post('http://localhost:8080/default/key/google/set', data=form)
-    assert r.response_code == 200
+    assert r.status_code == 200
 
 if __name__ == "__main__":
     Test_set()
