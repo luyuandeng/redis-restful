@@ -29,6 +29,7 @@ function struct_args(args)                --包装命令和参数
 end
     
 
+-- 无法使用":"为table添加方法, 这里使用"."为table添加方法
 table.loadstring = function(strData)
     local f = loadstring(strData)
     if f then
@@ -37,7 +38,49 @@ table.loadstring = function(strData)
 end
 
 
+table.has_key = function (self, key)
+    if self[key] then
+        return true
+    else 
+        return false
+    end
+end
+
+
+table.has_value = function(self, value) 
+    for i = 1, #self do
+        if self[i] == value then
+            return true
+        end
+    end
+    return false
+end
+
+
+-- req_args为空时,req_args = {}
+function check_args(req_args, conf_args)        
+    local req_args_length = 0
+    for k, v in pairs(req_args) do
+        req_args_length = req_args_length + 1
+    end
+
+    if req_args_length ~= conf_args['args_len'] then
+        ngx.log(ngx.INFO, 'error args_len '..#req_args..' '..conf_args['args_len'])
+        return false
+    end
+    
+    for i = 1, #conf_args['args'] do
+        local arg = conf_args['args'][i]
+        if not req_args[arg.name] then 
+            return false
+        end
+    end
+    return true
+end
+
+
 local configs = ngx.shared.configs
+
 local commands  = configs:get('commands')
 if not commands then
     ngx.log(ngx.INFO, 'err in get commands')
@@ -45,8 +88,49 @@ if not commands then
 end
 commands = table.loadstring(commands)
 
+local patterns = configs:get('patterns')
+if not patterns then
+    ngx.log(ngx.INFO, 'err when get patterns')
+    ngx.exit(500)
+end
+patterns = table.loadstring(patterns)
+
+local types = configs:get('types')
+if not types then
+    ngx.log(ngx.INFO, 'err when get types')
+    ngx.exit(500)
+end
+types = table.loadstring(types)
+
+local apps = configs:get('apps')
+if not apps then
+    ngx.log(ngx.INFO, 'err when get apps')
+    ngx.exit(500)
+end
+apps = table.loadstring(apps)
+
+
 local uri = ngx.var.uri
 local uri_args = uri:split('/')
+
+-- 检查该app是否已经注册
+if not table.has_value(apps, uri_args[1]) then
+    ngx.log(ngx.INFO, 'err '..uri_args[1]..' in uri')
+    ngx.exit(400)
+end
+
+-- 检查在url中的该类型是否符合要求
+if not table.has_value(types, uri_args[2]) then
+    ngx.log(ngx.INFO, 'err '..uri_args[2]..' in uri')
+    ngx.exit(400)
+end
+
+-- 检查该redis命令是否合法
+if not table.has_key(commands, uri_args[#uri_args]) then
+    ngx.log(ngx.INFO, 'err '..uri_args[#args]..' in uri')
+    ngx.exit(400)
+end
+
 
 local cmd = uri_args[#uri_args]
 local method = ngx.req.get_method()
