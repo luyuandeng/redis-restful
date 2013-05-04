@@ -6,16 +6,16 @@ module(...)
 servers =
 {
     {
-    name='server1',
-    host='127.0.0.1',
-    port=6380,
-    db=0
+        name='server1',
+        host='127.0.0.1',
+        port=6380,
+        db=0
     },
     {
-    name='server2',
-    host='127.0.0.1',
-    port=6379,
-    db=0
+        name='server2',
+        host='127.0.0.1',
+        port=6379,
+        db=0
     }
 }
 
