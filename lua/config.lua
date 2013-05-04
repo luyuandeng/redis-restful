@@ -8,7 +8,7 @@ servers =
     {
     name='server1',
     host='127.0.0.1',
-    port=6379,
+    port=6380,
     db=0
     },
     {
@@ -19,12 +19,13 @@ servers =
     }
 }
 
+-- 应用名称
 apps = 
-{
-    'appid', 
+{ 
     'default'
 }
 
+-- 访问的类型，有针对key的，也有针对keys的，后续会增加redis。
 types = 
 {
     'key',
