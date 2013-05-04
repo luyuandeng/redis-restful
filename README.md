@@ -1,13 +1,13 @@
-redis-restful
+Redis-Restful
 =============
 
-redis的restful实现
+对redis的restful接口包装
 -----------------
 
 + 使用restful接口访问和调用redis 
-+ 便于控制redis访问
++ 便于控制对redis访问
 + 规范化对redis统一操作
-+ 增强都redis的可控制性
++ 增强对redis的可控制性
 
 
 uri
@@ -17,8 +17,26 @@ uri
         |       |         |
     /{appid}/{types}/.../{cmd}
 
+Server Config
+-------------
 
-config format
+   servers =
+   {
+       {   
+           name = 'server1',
+           host = '127.0.0.1',
+           port = '6379',
+           db = 0
+       },
+       {
+           name = 'server2',
+           host = '127.0.0.1',
+           port = '6380',
+           db = 0
+       }
+   } 
+
+Command Config
 -------------
 
     commands = {
