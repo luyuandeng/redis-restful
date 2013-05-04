@@ -154,7 +154,7 @@ local arg_index = nil
 for i = 1, #commands[cmd] do
     local arg = commands[cmd][i]
     if method == arg['method'] then
-       if check_args(request_args, arg) then
+       if check_args(req_args, arg) then
            arg_index = i
            break
        end
