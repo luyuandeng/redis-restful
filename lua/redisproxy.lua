@@ -134,7 +134,7 @@ end
 
 local cmd = uri_args[#uri_args]
 local method = ngx.req.get_method()
-local req_args
+local req_args = nil
 if method == 'POST' then
     ngx.req.read_body()
     req_args = ngx.req.get_post_args()
@@ -148,12 +148,25 @@ if not confdocs then
     ngx.exit(500)
 end
 
+-- 获取请求的参数
 local redis_args = {}
-local arg_index = configs:get('arg_index')
-if not arg_index then
-    ngx.log(ngx.INFO, 'error when get arg_index')
-    ngx.exit(500)
+local arg_index = nil
+for i = 1, #commands[cmd] do
+    local arg = commands[cmd][i]
+    if method == arg['method'] then
+       if check_args(request_args, arg) then
+           arg_index = i
+           break
+       end
+    else
+        ngx.log(ngx.INFO, 'method error '..method..' '..arg['method'])
+    end
 end
+if not arg_index then
+    ngx.log(ngx.INFO, 'error in request args')
+    ngx.exit(404)
+end
+
 for i = 1, #confdocs[arg_index]['args'] do
     local arg = confdocs[arg_index]['args'][i]
     if arg.separate then
@@ -166,11 +179,22 @@ for i = 1, #confdocs[arg_index]['args'] do
     end
 end
 
-local pattern = configs:get('pattern')
+-- 获取匹配模式
+local pattern = nil
+for i = 1, #patterns do
+    local pat = string.match(uri, patterns[i]) 
+    ngx.log(ngx.INFO, 'matching '..patterns[i])
+    if pat then
+        ngx.log(ngx.INFO, 'uri is matched whith '..patterns[i])
+        pattern = i
+        break
+    end
+end
 if not pattern then
     ngx.log(ngx.INFO, 'err get pattern')
-    ngx.exit(500)
+    ngx.exit(404)
 end
+
 
 local cmd_ok, cmd_err
 if pattern == 1 then
